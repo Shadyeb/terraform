@@ -92,7 +92,7 @@ resource "aws_nat_gateway" "nat2" {
   }
 
 }
-################## From Here i will start tomorrow 
+
 resource "aws_route_table" "pubrt" {
   vpc_id = aws_vpc.myvpc.id
 
@@ -100,20 +100,5 @@ resource "aws_route_table" "pubrt" {
     Name = "Public Route Table"
   }
 }
-
-resource "aws_default_route_table" "mydefaultRT" {
-depends_on = aws_internet_gateway_attachment.igw-attach.id
-
-route = [ {
-  cidr_block = aws_vpc.myvpc.id
-  destination_prefix_list_id = "0.0.0.0/0"
-  gateway_id = aws_internet_gateway.myigaw.id
-
-} ]
-
-  tags = {
-    Name = "Default Route Table"
-  }
-}
-
+################## TBC
 
